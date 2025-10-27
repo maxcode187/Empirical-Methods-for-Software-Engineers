@@ -11,7 +11,7 @@ Ziel des Projekts ist es, empirische Untersuchungen im Bereich der Softwareentwi
 🧪 Aktuelles Experiment
 
 Das aktuelle Experiment untersucht die Navigationsgeschwindigkeit bei der Nutzung unterschiedlicher Eingabegeräte (Maus vs. Touchpad).
-Teilnehmende müssen Schaltflächen auf dem Bildschirm ansteuern und anklicken. Dabei werden automatisch Messdaten wie Zeit, Wegstrecke und Klickanzahl aufgezeichnet und anschließend als CSV-Datei exportiert.
+Teilnehmende müssen Schaltflächen auf dem Bildschirm ansteuern. Dabei werden automatisch Messdaten aufgezeichnet und anschließend als CSV-Datei exportiert.
 
 
 🛠️ Technische Umsetzung
@@ -23,5 +23,5 @@ Alle Messdaten werden lokal gesammelt und können nach Abschluss des Experiments
 Um das Projekt aufzusetzen: 
 
  => git clone ....
- 
+
  => npx http-server .
