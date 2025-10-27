@@ -1,5 +1,5 @@
 let SEED = "666";
-Nof1.SET_SEED(SEED);
+Nof1.SET_SEED(SEED); // eingabe für einen Zufallsgenerator 
 
 let experiment_configuration_function = (writer) => { return {
 
@@ -8,12 +8,19 @@ let experiment_configuration_function = (writer) => { return {
 
     introduction_pages: writer.stage_string_pages_commands([
         writer.convert_string_to_html_string(
-            "Please, open the browser in fullscreen mode (probably by pressing [F11]).\\ If Hello world is shown, press [1], otherwise [0]"),
+            "Bitte öffne den Browser im Vollbildmodus mit der [F11]-Taste. \n" +
+            "In diesem Experiment misst du deine Navigationsgeschwindigkeit zu einem Button. \n" +
+            "Es gibt Abschnitte in denen du entweder die Maus oder das Touchpad benuzten sollst. \n" +
+            "Vor jedem Abschnitt wird dir deutlich angezeigt, welches Eingabegerät du jetzt verwenden sollst. \n" + 
+            "Bitte benutze dann nur dieses Gerät, bis der Abschnitt beendet ist. \n" +
+            "Wenn Hello World angezeigt wird, drücke [1], ansonsten [0]."
+        
+        ),
     ]),
 
     pre_run_training_instructions: writer.string_page_command(
         writer.convert_string_to_html_string(
-            "You entered the training phase."
+            "Du bist gerade in  Trainingsphase "
         )),
 
     pre_run_experiment_instructions: writer.string_page_command(
@@ -35,11 +42,12 @@ let experiment_configuration_function = (writer) => { return {
                  die unterschiedlichen Werte stehen als List in den Treatments
                  Im ersten Experiment hat man normalerweise nur eine Variable mit 2 Treatments (Werte für die Variable)
          */
-        { variable: "MyVariable",  treatments: ["dummy", "non-dummy"]},
+        { variable: "InputDevice",  treatments: ["Mouse", "Touchpad"]},
+        { variable: "Distance",  treatments: ["0", "10", "20"]},
     ],
 
     /* ToDo: Hier gebe ich an, wie oft ich jede Treatmentkombination im Experiment testen möchte */
-    repetitions: 100,
+    repetitions: 5,
 
     /* ToDo: Hier gebe ich an, welche "Art" das Experiment ist. Ich gehe hier davon aus, dass es ein Experiment ist,dass
     *        darauf wartet, dass der Teilnehmer die Taste "0" oder "1" drückt
@@ -51,14 +59,14 @@ let experiment_configuration_function = (writer) => { return {
         task.do_print_task = () => {
 
             // So erzeuge ich eine Zufallszahl (NICHT "default"-Code a la StackOverflow verwenden!
-            let random_int_from_0_to_excluding_10 = Nof1.new_random_integer(10);
+            // let random_int_from_0_to_excluding_10 = Nof1.new_random_integer(10);
 
             // Ausgabebildschirm wird gelöscht
             writer.clear_stage();
 
             // Guck, weist den Wert der ersten Experiment-Variablen (task.treatment_combination.treatment_combination[0])
             // der lokalen Variablen treatment_of_variable_MyVariable zu.
-            let treatment_of_variable_MyVariable = task.treatment_combination.treatment_combination[0].value;
+            /*let treatment_of_variable_MyVariable = task.treatment_combination.treatment_combination[0].value;
 
             // Testet, ob Wert von MyVariable den Wert "dummy" hat
             if( treatment_of_variable_MyVariable =="dummy") {
@@ -68,18 +76,18 @@ let experiment_configuration_function = (writer) => { return {
             } else {
                 writer.print_html_on_stage("Exit world + random number: " + random_int_from_0_to_excluding_10);
                 task.expected_answer = "0";
-            }
+            }*/
         };
 
         /* ToDo: Legt fest, wann eine Aufgabe als bearbeitet angesehen wird. Die Variable "answer" ist dabei die Taste, die gedrückt wurde.
                  Falls es für das Experiment egal ist, einfach true zurückgeben.
         *  */
         task.accepts_answer_function = (answer) => {
-            if (answer == task.expected_answer) {
+            //if (answer == task.expected_answer) {
                 return true;
-            } else {
-                return false;
-            }
+            //} else {
+            //     return false;
+            // }
         }
 
         /**
@@ -98,6 +106,9 @@ let experiment_configuration_function = (writer) => { return {
             writer.print_html_on_stage(
                 writer.convert_string_to_html_string("Ok, good answer. When you press [Enter] the experiment goes on."));
         }
+
+        writer.print_html_on_stage("&nsp"
+        );
     }
 }};
 
