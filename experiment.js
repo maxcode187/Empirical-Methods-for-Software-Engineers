@@ -43,7 +43,7 @@ let experiment_configuration_function = (writer) => { return {
                  Im ersten Experiment hat man normalerweise nur eine Variable mit 2 Treatments (Werte für die Variable)
          */
         { variable: "InputDevice",  treatments: ["Mouse", "Touchpad"]},
-        { variable: "Distance",  treatments: ["0", "10", "20"]},
+        //{ variable: "Distance",  treatments: ["0", "10", "20"]},
     ],
 
     /* ToDo: Hier gebe ich an, wie oft ich jede Treatmentkombination im Experiment testen möchte */
@@ -76,7 +76,13 @@ let experiment_configuration_function = (writer) => { return {
             } else {
                 writer.print_html_on_stage("Exit world + random number: " + random_int_from_0_to_excluding_10);
                 task.expected_answer = "0";
+
             }*/
+
+        writer.print_html_on_stage(
+            "&nbsp;".repeat(parseInt(task.treatment_combination.treatment_combination[1].value) * 15) + "<button type=\"button\">"  +
+            task.treatment_combination.treatment_combination[0].value + "</button>");
+
         };
 
         /* ToDo: Legt fest, wann eine Aufgabe als bearbeitet angesehen wird. Die Variable "answer" ist dabei die Taste, die gedrückt wurde.
@@ -106,9 +112,6 @@ let experiment_configuration_function = (writer) => { return {
             writer.print_html_on_stage(
                 writer.convert_string_to_html_string("Ok, good answer. When you press [Enter] the experiment goes on."));
         }
-
-        writer.print_html_on_stage("&nsp"
-        );
     }
 }};
 
