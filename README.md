@@ -23,4 +23,5 @@ Alle Messdaten werden lokal gesammelt und können nach Abschluss des Experiments
 Um das Projekt aufzusetzen: 
 
  => git clone ....
+ 
  => npx http-server .
