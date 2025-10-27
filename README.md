@@ -1,7 +1,5 @@
 # EMSE Wintersemester 2025 
 
-Autor: Maximilian Schoenen
-
 📘 Projektübersicht 
 
 Dieses Repository enthält alle Materialien, Experimente und Auswertungen zur Veranstaltung „Empirische Methoden für Softwareentwickler“ an der Universität Duisburg-Essen im Wintersemester 2025.
